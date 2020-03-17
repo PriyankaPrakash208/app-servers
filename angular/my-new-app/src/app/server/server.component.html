@@ -1,0 +1,10 @@
+<p 
+    [ngStyle]="{backgroundColor:getcolor()}"
+    [ngClass]= "{online:serverStatus == 'online'}"
+    
+> 
+    {{"Server"}} with id {{serverId}} is now {{getServerStatus()}}
+</p>
+
+<!-- using ngStyle : changing bg color of p based on status -->
+

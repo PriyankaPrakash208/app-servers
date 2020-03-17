@@ -1,0 +1,63 @@
+<!-- Event binding -->
+
+<p>servers works!</p>
+<!-- <input type="text"
+    class="form-control"
+    (input)=onUpdateServerName($event)
+> -->
+
+<!-- Two way binding -->
+<input type="text"
+    class="form-control"
+    [(ngModel)] = "serverName"
+>
+<br>
+<p>{{serverName}}</p> 
+
+<!--  -->
+<button 
+    class="btn btn-primary btn-small" 
+    [disabled]="!allowNewServer" 
+    (click) = "onServerCreation()"> 
+    Add Server
+</button>
+<!-- <p>{{allowNewServer}} </p>  -->
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- <p>{{serverCreatedStatus}}</p> -->
+<p *ngIf = "serverCreated; else noServer">Server was created! Name is {{serverName}}</p>
+<!-- like an else here-->
+<ng-template #noServer>
+    <p>No server was created!</p>
+</ng-template>
+<hr>
+<!-- Assignment  2 -->
+<h3>Assignment 2</h3>
+<input type="text" class="form-control" [(ngModel)] = "username">
+<p>{{username}}</p>
+
+<button 
+    class="btn btn-small btn-warning" 
+    [disabled]="username === ''" 
+    (click)="username = ''">
+    Add User
+</button>
+
+<hr>
+<app-server *ngFor="let server of servers"></app-server>
+
+<hr>
+<h4> Directives assignment : LIst , click count, toggle</h4><hr>
+<!-- easy toggle -->
+<!-- <button class="btn btn-primary btn-small" (click)="showSecret = !showSecret">Display Details</button> -->
+
+<button class="btn btn-primary btn-small" (click)=onTogglerClick()>Display Details</button>
+<p *ngIf= "showSecret"> Secret password = Tuna </p>
+<h5> Click Log</h5>
+<div *ngFor="let log of clickCountArray; let i = index">
+    <p 
+        [ngClass]= "{textwhite:i >= 5}" 
+        [ngStyle]= "{backgroundColor: i >= 5 ? 'purple' : 'transparent'}"
+    >
+        Click count : {{log}} 
+    </p>
+</div>
